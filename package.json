@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/sr258/scorm-h5p-wrapper/issues"
   },
-  "homepage": "https://github.com/sr258/scorm-h5p-wrapper#readme"
+  "homepage": "https://github.com/sr258/scorm-h5p-wrapper#readme",
+  "dependencies": {
+    "simple-scorm-packager": "^0.2.3"
+  }
 }
