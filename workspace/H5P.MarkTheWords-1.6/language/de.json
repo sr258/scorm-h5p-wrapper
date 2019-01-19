@@ -1,0 +1,64 @@
+{
+  "semantics": [
+    {
+      "label": "Aufgabenbeschreibung",
+      "description": "Beschreibe, wie der Nutzer die Aufgabe lösen kann.",
+      "placeholder": "Klicke auf alle Verben im folgenden Text."
+    },
+    {
+      "label": "Textfeld",
+      "placeholder": "Das ist eine Antwort: *Antwort*.",
+      "description": "Markierte Wörter werden mit einem Sternchen (*) hinzugefügt. Ein Sternchen kann mit einem weiteren Sternchen maskiert werden, so dass im Text aus ** ein * wird. Beispiel: Die korrekten Wörter sind mit: *korrekteswort* markiert, und ein Sternchen als Zeichen wir so geschrieben: **."
+    },
+    {
+      "label": "Text für den \"Überprüfen\"-Button",
+      "default": "Überprüfen"
+    },
+    {
+      "label": "Text für den \"Wiederholen\"-Button",
+      "default": "Wiederholen"
+    },
+    {
+      "label": "Text für den \"Lösung zeigen\"-Button",
+      "default": "Lüsung zeigen"
+    },
+    {
+      "label": "Rückmeldungstext",
+      "default": "Du hast @score von @total Punkten",
+      "placeholder": "Du hast @score von @total Punkten",
+      "description": "Als Variablen für den Rückmeldungstext gibt es: @score @total @correct @wrong @missed. Beispiel: 'Punkte: @score von @total, korrekt: @correct, falsch: @wrong, übergangen: @missed.'"
+    },
+    {
+      "label": "Verhaltenseinstellungen.",
+      "description": "Diese Optionen bestimmen, wie die Aufgabe auf Eingaben reagiert.",
+      "fields": [
+        {
+          "label": "\"Wiederholen\" ermöglichen"
+        },
+        {
+          "label": "\"Lösung zeigen\" ermöglichen"
+        }
+      ]
+    },
+    {
+      "label": "Text für richtige Antworten",
+      "default": "Korrekt!",
+      "description": "Mit diesem Text wird angezeigt, dass die Antwort richtig war."
+    },
+    {
+      "label": "Text für falsche Antworten",
+      "default": "Falsch!",
+      "description": "Mit diesem Text wird angezeigt, dass die Antwort falsch war."
+    },
+    {
+      "label": "Text für übergangene Antworten",
+      "default": "Vergessen!",
+      "description": "Mit diesem Text wird angezeigt, dass die Antwort nicht gegeben wurde."
+    },
+    {
+      "label": "Beschreibung für das Zeigen der Lösung",
+      "default": "Die Aufgabe zeigt nun die Lösungen",
+      "description": "Mit diesem Text wird angezeigt, dass nun die richtigen Lösungen angezeigt werden."
+    }
+  ]
+}

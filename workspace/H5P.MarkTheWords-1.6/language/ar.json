@@ -1,0 +1,61 @@
+{
+  "semantics": [
+    {
+      "label": "وصف النشاط",
+      "description": "وصف الكيفية التي ينبغي للمستخدم حل النشاط"
+    },
+    {
+      "label": "الحقل النصي",
+      "description": "تضاف الكلمات التي تحمل علامة أستريكس (*) في بديتهاونهايتها بدون اضافة مسافة في منتصف الكلمة. على سبيل المثال: يتم وضع علامة على الكلمات الصحيحة مع مثل هذا *كلمة* ا"
+    },
+    {
+      "label": "النص   \"تحقق \" لزر"
+    },
+    {
+      "label": "النص   \"إعادة المحاولة \" لزر"
+    },
+    {
+      "label": "النص  \"مشاهدة الحل \" لزر"
+    },
+    {
+      "label": "نص الملاحظات",
+      "description": "ملاحظات النص، والمتغيرات المتاحة:@score @total @correct @wrong @missed. مثال: 'نقاط : @score of @total, الصحيحة: @correct, الخطأ: @wrong, غائب: @missed'"
+    },
+    {
+      "label": "حساسية الاجابة",
+      "description": "يتأكد من إجابة المستخدم بأن تكون بالضبط نفس الجواب",
+      "fields": [
+        {
+          "label": "تمكين زر \"إعادة المحاولة\""
+        },
+        {
+          "label": "تمكين زر \"مشاهدة الحل\""
+        }
+      ]
+    },
+    {
+      "englishLabel": "Correct answer text",
+      "label": "نص الجواب الصحيح",
+      "englishDefault": "Correct!",
+      "default": "صحيح!"
+    },
+    {
+      "englishLabel": "Incorrect answer text",
+      "label": "نص الجواب غير صحيح",
+      "englishDefault": "Incorrect!",
+      "default": "غير صحيح!"
+    },
+    {
+      "englishLabel": "Missed answer text",
+      "label": "غاب نص الجواب",
+      "englishDefault": "Missed!",
+      "default": "افتقد!"
+    },
+    {
+      "englishLabel": "Description for Display Solution",
+      "label": "وصف لعرض الحل",
+      "englishDefault": "Task is updated to contain the solution.",
+      "default": "يتم تحديث مهمة لاحتواء الحل."
+    }
+  ]
+}

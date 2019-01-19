@@ -1,0 +1,61 @@
+{
+  "semantics": [
+    {
+      "label": "Descrizione attività",
+      "description": "Descrivere come l'utente deve risolvere il compito."
+    },
+    {
+      "label": "Campo testo",
+      "description": "Le parole contrassegnate sono aggiunte con un asterisco (*). Un asterisco può essere sottratto con un altro asterisco, con conseguente ** = *. Esempio: Le parole corrette sono contrassegnate in questo modo: *parolacorretta* , e un carattere asterisco è scritto in questo modo: **."
+    },
+    {
+      "label": "Testo per il pulsante \"Verifica\""
+    },
+    {
+      "label": "Testo per il pulsante \"Riprova\""
+    },
+    {
+      "label": "Testo per il pulsante \"Mostra Soluzione\""
+    },
+    {
+      "label": "Testo del Feedback",
+      "description": "Testo del Feedback (Riscontro), variabili consentite: @score @total @correct @wrong @missed. Esempio: 'Punteggio : @score di @total, corretto: @correct, errato: @wrong, mancante: @missed.'"
+    },
+    {
+      "label": "Impostazioni esecuzione",
+      "description": "Queste opzioni consentono di controllare l'andamento del compito.",
+      "fields": [
+        {
+          "label": "Abilita \"Riprova\""
+        },
+        {
+          "label": "Abilita il pulsante \"Mostra soluzioni\""
+        }
+      ]
+    },
+    {
+      "englishLabel": "Correct answer text",
+      "label": "Testo della risposta corretta",
+      "englishDefault": "Correct!",
+      "default": "Corretta!"
+    },
+    {
+      "englishLabel": "Incorrect answer text",
+      "label": "Testo della risposta non corretta",
+      "englishDefault": "Incorrect!",
+      "default": "Non corretta"
+    },
+    {
+      "englishLabel": "Missed answer text",
+      "label": "Testo della risposta senza risposta",
+      "englishDefault": "Missed!",
+      "default": "Senza risposta!"
+    },
+    {
+      "englishLabel": "Description for Display Solution",
+      "label": "Descrizione per soluzione di visualizzazione",
+      "englishDefault": "Task is updated to contain the solution.",
+      "default": "Task viene aggiornato per contenere la soluzione."
+    }
+  ]
+}

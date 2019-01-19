@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/sr258/scorm-h5p-wrapper#readme",
   "dependencies": {
+    "fs-extra": "^7.0.1",
     "simple-scorm-packager": "^0.2.3"
   }
 }
