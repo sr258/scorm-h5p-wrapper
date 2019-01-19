@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="pipwerksWrapperSCORM12" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <organizations default="SCORM-H5P">
+    <organization identifier="SCORM-H5P" structure="hierarchical">
+      <title>SCORM H5P TEST</title>
+      <item identifier="SCORM H5P TEST" isvisible="true" identifierref="scormh5pfiles" >
+        <title>SCORM H5P TEST</title>
+      </item>
+    </organization>
+	</organizations>
+  <resources>
+    <resource identifier="scormh5pfiles" type="webcontent" adlcp:scormtype="sco" href="index.html">
+      <file href="index.html" />
+      <file href="SCORM_API_wrapper.js" />
+      <file href="h5p-adaptor.js" />
+      <file href="h5p-standalone/fonts/h5p-core-18.eot" />
+      <file href="h5p-standalone/fonts/h5p-core-18.svg" />
+      <file href="h5p-standalone/fonts/h5p-core-18.ttf" />
+      <file href="h5p-standalone/fonts/h5p-core-18.woff" />
+      <file href="h5p-standalone/js/h5p-standalone-frame.min.js" />
+      <file href="h5p-standalone/js/h5p-standalone-main.min.js" />
+      <file href="h5p-standalone/styles/h5p-admin.css" />
+      <file href="h5p-standalone/styles/h5p-confirmation-dialog.css" />
+      <file href="h5p-standalone/styles/h5p-core-button.css" />
+      <file href="h5p-standalone/styles/h5p.css" />
+    </resource>
+  </resources>
+</manifest>

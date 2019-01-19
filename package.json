@@ -1,0 +1,23 @@
+{
+  "name": "scorm-h5p-wrapper",
+  "version": "0.1.0",
+  "description": "A SCORM wrapper for h5p content",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sr258/scorm-h5p-wrapper.git"
+  },
+  "keywords": [
+    "h5p",
+    "scorm"
+  ],
+  "author": "Sebastian Rettig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sr258/scorm-h5p-wrapper/issues"
+  },
+  "homepage": "https://github.com/sr258/scorm-h5p-wrapper#readme"
+}

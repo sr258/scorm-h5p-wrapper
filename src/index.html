@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <title>SCORM TEST</title>
+  <style type="text/css">
+    body,
+    html {
+      margin: 0px;
+      padding: 0px;
+      height: 100%;
+      overflow: auto;
+    }
+  </style>
+  <link type="text/css" rel="stylesheet" media="all" href="h5p-standalone/styles/h5p.css" />
+  <meta charset="utf-8" />
+  <script type="text/javascript" src="h5p-standalone/js/h5p-standalone-main.min.js"></script>
+  <script type="text/javascript" src="SCORM_API_wrapper.js"></script>
+  <script type="text/javascript" src="h5p-adaptor.js"></script>
+  <script type="text/javascript">
+    (function($) {
+      $(function() {
+        $('.h5p-container').h5p({
+          frameJs: 'h5p-standalone/js/h5p-standalone-frame.min.js',
+          frameCss: 'h5p-standalone/styles/h5p.css',
+          h5pContent: 'workspace'
+        });
+      });
+    })(H5P.jQuery);
+  </script>
+</head>
+
+<body>
+  <div style="width:100%;height:100%;overflow:hidden" class="h5p-container"></div>
+</body>
+
+</html>
