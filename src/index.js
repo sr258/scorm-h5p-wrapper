@@ -5,7 +5,7 @@ var decompress = require('decompress');
 var creator = require('./creator').default;
 var ON_DEATH = require('death')({ uncaughtException: true });
 
-const port = 80;
+const port = 3000;
 
 const workingDir = "working_directory";
 const uploadTmpDir = workingDir + "/downloads_tmp";
