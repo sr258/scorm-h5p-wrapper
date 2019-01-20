@@ -5,6 +5,8 @@ var decompress = require('decompress');
 var creator = require('./creator').default;
 var ON_DEATH = require('death')({ uncaughtException: true });
 
+const port = 80;
+
 const workingDir = "working_directory";
 const uploadTmpDir = workingDir + "/downloads_tmp";
 const h5pContentBaseDir = workingDir + "/workspace";
@@ -60,7 +62,7 @@ ON_DEATH(function (signal, err) {
     });
   });
 
-  app.listen(3000, function () {
-    console.log('listening');
+  app.listen(port, function () {
+    console.log('listening on port ' + port);
   });
 })();
