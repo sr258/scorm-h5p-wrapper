@@ -2,7 +2,7 @@
 
 <head>
 </head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+<link rel="stylesheet" href="bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
   crossorigin="anonymous">
 
 <body style="max-width: 900px; margin:12px;">
@@ -13,8 +13,8 @@
   </p>
   <hr>
   <p>To package a H5P file into a SCORM package, select a file from your disk and click on "Package". Your browser will
-    the download the SCORM package as a zip file. You can then put the zip file into a LMS of your choice.<br /> <i>Note:
-      Your H5P file is uploaded to the server of this utility during this process!</i>
+    then download the SCORM package as a zip file. You can put this zip file into a LMS of your choice.<br /> <i>Note:
+      Your H5P file is uploaded to the server of this utility during the packaging process!</i>
   </p>
   <p>
     <form action="convert" method="post" enctype="multipart/form-data">
@@ -30,25 +30,67 @@
     </form>
   </p>
   <hr />
-  <div>
-    <h3>Imprint</h3>
+  <details>
+    <summary class="h3">Usage tips</summary>
+    <p>
+      <b>Advantages</b> of packaging H5P content into SCORM (in comparison to embedding from external sites or using
+      the
+      built-in H5P module of your LMS):
+      <ul>
+        <li>You can use H5P in any LMS that supports SCORM.</li>
+        <li>Scores are reported to the LMS through SCORM.</li>
+        <li>You don't have to rely on external sites (privacy concerns, availability).</li>
+        <li>You can use H5P content types which are not available in your LMS.</li>
+        <li>Your content will never change, so updates to the H5P core or libraries won't affect it.</li>
+      </ul>
+      <b>Disadvantages</b> of packing H5P content into SCORM:
+      <ul>
+        <li>Users don't benefit from caching H5P library files across content. This means that all JavaScript, HTML and
+          CSS files have to be downloaded for each package. If the LMS server is a bit slow, this can lead to
+          noticeable delays in loading the content.</li>
+        <li>You can't use the H5P Editor in your LMS to quickly change the content. You have to store your H5P files in
+          a separate place and edit your content on <a href="https://h5p.org">H5P.org or on another CMS that supports H5P (like a local <a href="https://www.drupal.org">Drupal</a> or
+          <a href="https://wordpress.org">WordPress</a> installation)</li>
+        <li>You don't benefit from updates to H5P libraries or the core.</li>
+        <li>The packages are a bit bigger as they include the h5p-standalone library.</li>
+      </ul>
+      As a conclusion, <b>you should only package H5P into SCORM if there are compelling reasons to do so and if you know
+      what you are doing</b>! If you have administrative rights on your LMS and there is a H5P module for it, you should
+      certainly install this module and upload your content the regular way.
+    </p>
+  </details>
+  <details>
+    <summary class="h3">Imprint</summary>
     <p>
       Sebastian Rettig<br />
       Heidestr. 57<br />
       D-90542 Eckental</br />
       Germany
     </p>
-  </div>
-  <div>
-    <h3>Privacy Policy</h3>
+  </details>
+  <details>
+    <summary class="h3">Privacy Policy</summary>
     This utility does not collect any private information when you open this site or submit H5P files. The files you
     upload are immediately deleted after the SCORM package has been created. You can read about which information the
     hoster of this
     site (OpeNode) collects <a href="https://www.openode.io/privacy">in their privacy policy</a>. This site is hosted
     by OpeNode (Martin Lévesque) in Canada.
-  </div>
-  <div>
-    <h3>Terms and Conditions</h3>
+  </details>
+  <details>
+    <summary class="h3">Third party libraries</summary>
+    This application uses the following third party libraries:
+    <ul>
+      <li>
+        <a href="https://getbootstrap.com/">Twitter Bootstrap</a> (Copyright 2011-2018 The Bootstrap Authors, Copyright
+        2011-2018 Twitter, Inc., MIT License)
+      </li>
+      <li><a href="https://github.com/tunapanda/h5p-standalone">h5p-standalone</a> (Tunapanda, MIT License)</li>
+      <li><a href="https://github.com/pipwerks/scorm-api-wrapper">pipwerks SCORM Wrapper for JavaScript</a> (Philip
+        Hutchison, January 2008-2018, <a href="https://pipwerks.mit-license.org/">MIT-like license</a>)</li>
+    </ul>
+  </details>
+  <details>
+    <summary class="h3">Terms and Conditions</summary>
     <code>
       MIT License<br/>
       <br/>
@@ -72,7 +114,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE<br/>
 SOFTWARE<br/>
     </code>
-  </div>
+  </details>
 </body>
 
 </html>
