@@ -19,7 +19,7 @@
   <p>
     <form action="convert" method="post" enctype="multipart/form-data">
       <div class="custom-file">
-        <input type="file" class="custom-file-input" name="h5p_file" id="h5p_file_upload">
+        <input type="file" class="custom-file-input" name="h5p_file" id="h5p_file_upload" required>
         <label class="custom-file-label" for="h5p_file_upload">Choose file</label>
       </div>
       <p style="margin-top:8px;">
@@ -28,6 +28,7 @@
       </p>
       <button name="submit" type="submit" class="btn btn-primary">Package</button>
     </form>
+    <i>This server is kindly provided by <a href="https://www.openode.io">OpeNode</a> free of charge and only has limited resources. This means that large H5P files might not work as expected.</i>
   </p>
   <hr />
   <details>

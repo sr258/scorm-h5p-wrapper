@@ -40,7 +40,7 @@ ON_DEATH(function (signal, err) {
 
   app.post('/convert', async function (req, res) {
     var uploadedFile;
-    if (!req.files) {
+    if (!req.files || !req.files.h5p_file) {
       return res.status(400).send();
     }
     uploadedFile = req.files.h5p_file;
@@ -56,6 +56,9 @@ ON_DEATH(function (signal, err) {
       await fs.remove(uploadedFilePath);
       const filename = await creator(outputDir, workspaceName, tempDir);
       await fs.remove(workspaceName);
+      if (!filename) {
+        return res.status(400).send();
+      }
       res.download(outputDir + "/" + filename, async () => {
         await fs.remove(outputDir + "/" + filename);
       });
