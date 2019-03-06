@@ -36,6 +36,7 @@ ON_DEATH(function (signal, err) {
   await createWorkingDirectories();
   var app = express();
   app.use(fileupload());
+  app.use(express.urlencoded({ extended: false }));
   app.use(express.static('src/static'));
 
   app.post('/convert', async function (req, res) {
@@ -44,6 +45,9 @@ ON_DEATH(function (signal, err) {
       return res.status(400).send();
     }
     uploadedFile = req.files.h5p_file;
+
+    var masteryScore = req.body.h5p_mastery_score;
+
     const uploadedFilePath = uploadTmpDir + "/" + uploadedFile.name;
     const tempDir = tempBaseDir + "/" + uploadedFile.name;
     uploadedFile.mv(uploadedFilePath, async (err) => {
@@ -54,7 +58,7 @@ ON_DEATH(function (signal, err) {
       const workspaceName = h5pContentBaseDir + "/" + uploadedFile.name;
       await decompress(uploadedFilePath, workspaceName);
       await fs.remove(uploadedFilePath);
-      const filename = await creator(outputDir, workspaceName, tempDir);
+      const filename = await creator(outputDir, workspaceName, tempDir, masteryScore);
       await fs.remove(workspaceName);
       if (!filename) {
         return res.status(400).send();

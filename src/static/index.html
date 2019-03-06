@@ -6,10 +6,10 @@
   integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 <body style="max-width: 900px; margin:12px;">
-  <h1>H5P SCORM packager</h1>
+  <h1>H5P SCORM Packager</h1>
   <p>
-    This utility allows you to package H5P files into SCORM files. It's licensed under the MIT license and the source
-    code can be found on <a href="https://github.com/sr258/scorm-h5p-wrapper">GitHub</a>.<br>
+    This utility allows you to package H5P files into SCORM 1.2 files. It's licensed under the MIT license and the
+    source code can be found on <a href="https://github.com/sr258/scorm-h5p-wrapper">GitHub</a>.<br>
   </p>
   <hr>
   <p>To package a H5P file into a SCORM package, select a file from your disk and click on "Package". Your browser will
@@ -22,6 +22,18 @@
         <input type="file" class="custom-file-input" name="h5p_file" id="h5p_file_upload" required>
         <label class="custom-file-label" for="h5p_file_upload">Choose file</label>
       </div>
+      <details>
+        <summary>Options</summary>
+        <div class="form-group row">
+          <label for="h5p_mastery_score_input" class="col-sm-3 col-form-label"
+            title="When users have a score above this threshold, the activity will be marked as 'passed'. Otherwise it will be marked as 'failed'.">Mastery
+            score (in percent)</label>
+          <div class="col-sm-2">
+            <input type="number" class="form-control" name="h5p_mastery_score" id="h5p_mastery_score_input" min="0"
+              max="100" value="100">
+          </div>
+        </div>
+      </details>
       <p style="margin-top:8px;">
         <input type="checkbox" required name="terms" id="terms"><label for="terms"><b>&nbsp;I accept the Terms and
             Conditions (see below) and am aware that I do not get any kind of warranty on the files created.</b></label>
@@ -56,8 +68,7 @@
         <li>The packages are a bit bigger as they include the h5p-standalone library.</li>
       </ul>
       As a conclusion, <b>you should only package H5P into SCORM if there are compelling reasons to do so and if you
-        know
-        what you are doing</b>! If you have administrative rights on your LMS and there is a H5P module for it, you
+        know what you are doing</b>! If you have administrative rights on your LMS and there is a H5P module for it, you
       should
       certainly install this module and upload your content the regular way.
     </p>

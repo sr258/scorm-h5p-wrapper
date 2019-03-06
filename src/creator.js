@@ -8,7 +8,10 @@ var cleanAndTrim = (text) => {
   return textClean.replace(/\s/g, "");
 }
 
-var creator = async (outputDir, h5pContentDir, tempDir) => {
+var creator = async (outputDir, h5pContentDir, tempDir, masteryScore) => {
+  if (!masteryScore) {
+    masteryScore = 100;
+  }
   await fs.remove(tempDir);
   await fs.copy(templateDir, tempDir, { errorOnExist: false, overwrite: true, recursive: true });
   await fs.copy(h5pContentDir, tempDir + "/workspace", { errorOnExist: false, overwrite: true, recursive: true })
@@ -16,12 +19,12 @@ var creator = async (outputDir, h5pContentDir, tempDir) => {
     const h5p = await fs.readJSON(h5pContentDir + "/h5p.json");
     return new Promise((resolve, reject) => {
       const options = {
-        version: '2004 4th Edition',
+        version: '1.2',
         organization: h5p.authors && h5p.authors[0] ? h5p.authors[0].name : 'H5P Author',
         title: h5p.title || "H5P Content",
         language: 'en-EN',
         identifier: '00',
-        masteryScore: 100,
+        masteryScore: masteryScore,
         startingPage: 'index.html',
         source: tempDir,
         package: {
