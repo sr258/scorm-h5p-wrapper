@@ -31,4 +31,4 @@ As a conclusion, you should only package H5P into SCORM if there are compelling 
 
 ## Running it without installation
 
-There is a running version of this application at https://scorm-h5p.openode.io/
+There is a running version of this application at https://deutsche-h5p-uebersetzungscommunity.tk/scorm-h5p/
