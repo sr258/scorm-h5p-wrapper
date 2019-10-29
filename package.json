@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6-alpha.6",
     "fs-extra": "^8.1.0",
+    "lodash": "^4.17.15",
     "simple-scorm-packager": "^0.2.3"
   }
 }

@@ -26,8 +26,10 @@ As a conclusion, you should only package H5P into SCORM if there are compelling 
 * It's a NodeJS application, so get NodeJS and NPM for your system.
 * Clone this repository
 * ``npm install``
-* ``npm start``
-* Access the application at ``http://localhost:3000``
+* ``PORT=8080 npm start``
+* Access the application at ``http://localhost:8080``
+
+Note that you must fill the placeholders for the imprint, privacy policy and license in ``/static``. You could do this by mounting a Docker volume into ``/static``. 
 
 ## Running it without installation
 

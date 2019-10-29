@@ -4,8 +4,11 @@ var fs = require('fs-extra');
 var decompress = require('decompress');
 var creator = require('./creator').default;
 var ON_DEATH = require('death')({ uncaughtException: true });
+var _ = require('lodash');
+var fsExtra = require('fs-extra');
+var path = require('path');
 
-const port = 80;
+const port = process.env.PORT || 80;
 
 const workingDir = "working_directory";
 const uploadTmpDir = workingDir + "/downloads_tmp";
@@ -37,6 +40,18 @@ ON_DEATH(function (signal, err) {
   var app = express();
   app.use(fileupload());
   app.use(express.urlencoded({ extended: false }));
+
+  // compile index.html
+  const compiled = _.template(await fsExtra.readFile(path.resolve('src/static/index.html')));
+  const index = compiled({
+    imprint: await fsExtra.readFile(path.resolve('static/imprint.html')),
+    privacy: await fsExtra.readFile(path.resolve('static/privacy.html')),
+    license: await fsExtra.readFile(path.resolve('static/license.html'))
+  });
+  app.get('/', (req, res) => {
+    res.send(index);
+  })
+
   app.use(express.static('src/static'));
 
   app.post('/convert', async function (req, res) {
