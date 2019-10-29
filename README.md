@@ -29,7 +29,13 @@ As a conclusion, you should only package H5P into SCORM if there are compelling 
 * ``PORT=8080 npm start``
 * Access the application at ``http://localhost:8080``
 
-Note that you must fill the placeholders for the imprint, privacy policy and license in ``/static``. You could do this by mounting a Docker volume into ``/static``. 
+Note that you must fill the placeholders for the imprint, privacy policy and license in ``/static``. You could do this by mounting a Docker volume into ``/usr/src/app/static``. 
+
+Example for docker-compose:
+```
+volumes:
+  - ./local-dir:/usr/src/app/static
+```
 
 ## Running it without installation
 
