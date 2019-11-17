@@ -10,7 +10,8 @@
             "name": "Launch Program",
             "program": "${workspaceFolder}/src/index.js",
             "env": {
-                "PORT": "8081"
+                "PORT": "8083",
+                "USE_STATISTICS": "true"
             }
         }
     ]

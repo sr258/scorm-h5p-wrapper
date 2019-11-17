@@ -4,3 +4,4 @@ src/template/frame.bundle.js
 src/template/main.bundle.js
 src/template/fonts/*
 src/template/styles/*
+statistics.csv
