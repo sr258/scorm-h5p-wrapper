@@ -26,6 +26,7 @@ As a conclusion, you should only package H5P into SCORM if there are compelling 
 * It's a NodeJS application, so get NodeJS and NPM for your system.
 * Clone this repository
 * ``npm install``
+* ``npm run copy-h5p-standalone`` to copy necessary files into the template directory
 * ``PORT=8080 npm start``
 * Access the application at ``http://localhost:8080``
 
@@ -36,6 +37,18 @@ Example for docker-compose:
 volumes:
   - ./local-dir:/usr/src/app/static
 ```
+
+## Logging
+
+You can log successful packaging in a CSV file using two environment variables:
+
+- set ``USE_STATISTICS`` to ``true``
+- set ``STATISTICS_FILE`` to a path in the filesystem where the log file should be stored. (optional, defaults to ``./statistics.csv``)
+
+Example (Linux):
+```
+PORT=8080 USE_STATISTICS=true STATISTICS_FILE=my_statistics.csv npm start
+``` 
 
 ## Running it without installation
 
