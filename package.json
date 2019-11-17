@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cp -r node_modules/h5p-standalone/dist/* src/template",
     "start": "node ./src/index.js"
   },
   "repository": {
@@ -27,6 +28,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6-alpha.6",
     "fs-extra": "^8.1.0",
+    "h5p-standalone": "^2.0.2",
     "lodash": "^4.17.15",
     "simple-scorm-packager": "^0.2.3"
   }
