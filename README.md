@@ -45,10 +45,16 @@ You can log successful packaging in a CSV file using two environment variables:
 - set ``USE_STATISTICS`` to ``true``
 - set ``STATISTICS_FILE`` to a path in the filesystem where the log file should be stored. (optional, defaults to ``./statistics.csv``)
 
-Example (Linux):
+Example (Linux, local installation):
 ```
-PORT=8080 USE_STATISTICS=true STATISTICS_FILE=my_statistics.csv npm start
+$ PORT=8080 USE_STATISTICS=true STATISTICS_FILE=my_statistics.csv npm start
 ``` 
+
+Example (Docker):
+
+```
+$ docker run --name "scorm-h5p" --env USE_STATISTICS=true --env STATISTICS_FILE=/usr/src/app/logs/log.csv -p 8085:80 -v /home/USER/scorm-h5p-wrapper/logs:/usr/src/app/logs sr258/scorm-h5p:1.0
+```
 
 ## Running it without installation
 
