@@ -58,4 +58,4 @@ $ docker run --name "scorm-h5p" --env USE_STATISTICS=true --env STATISTICS_FILE=
 
 ## Running it without installation
 
-There is a running version of this application at https://deutsche-h5p-uebersetzungscommunity.tk/scorm-h5p/
+There is a running version of this application at https://translate-h5p.tk/scorm-h5p/
