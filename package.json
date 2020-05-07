@@ -1,6 +1,6 @@
 {
   "name": "scorm-h5p-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A SCORM wrapper for h5p content",
   "main": "src/index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/sr258/scorm-h5p-wrapper#readme",
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "csv-writer": "^1.5.0",
     "death": "^1.1.0",
     "decompress": "^4.2.0",
