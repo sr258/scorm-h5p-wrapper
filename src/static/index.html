@@ -25,6 +25,27 @@
       </div>
       <details>
         <summary>Options</summary>
+        <div>
+          <!-- Determine how to score result -->
+          <h2>Grading Method</h2>
+            <p>
+              <input type="radio" id="Branching" name="gradingMethod" value="Branching" checked="checked">
+              <label for="Branching"
+              title="A grade will be assigned as marked by the branching Scenario H5P extenstion. Hence, it will either grade based on the cumulative score of branching questions, or based on the ending that the user gets, depending on what was selected during the creation of the H5P module."
+              >Branching Scenario Scoring</label><br>
+            
+              <input type="radio" id="Question" name="gradingMethod" value="Question">
+              <label for="Question"
+              title="A grade will be assigned based on just the questions embedded in presentations throughout the module. This option will not grade branching questions or score endings."
+              >Question Scoring</label><br>
+          
+              <input type="radio" id="both" name="gradingMethod" value="Both">
+              <label for="both"
+              title="A grade will be assigned based on the sum of both the branching scenario score and the questions embedded in presentations through the module. The branching scenario portion will be determined by the setting that was selected during the creation of the module."
+              >Both</label>
+            </p>
+          
+        </div>
         <div class="form-group row">
           <label for="h5p_mastery_score_input" class="col-sm-3 col-form-label"
             title="When users have a score above this threshold, the activity will be marked as 'passed'. Otherwise it will be marked as 'failed'.">Mastery

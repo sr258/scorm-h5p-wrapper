@@ -74,6 +74,8 @@ ON_DEATH(function(signal, err) {
     }
     uploadedFile = req.files.h5p_file;
     const masteryScore = req.body.h5p_mastery_score;
+    const gradingMethod = req.body.gradingMethod;
+    console.log("gradingMethod: " + gradingMethod);
 
     const uploadedFilePath = uploadTmpDir + "/" + uploadedFile.name;
     const tempDir = tempBaseDir + "/" + uploadedFile.name;
@@ -115,7 +117,8 @@ ON_DEATH(function(signal, err) {
           outputDir,
           workspaceName,
           tempDir,
-          masteryScore
+          masteryScore, 
+          gradingMethod
         );
       } catch (error) {
         console.error(chalk.red(new Date().toLocaleString() + " - " + error));

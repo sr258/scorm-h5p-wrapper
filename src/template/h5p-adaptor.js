@@ -69,7 +69,6 @@ var onCompleted = function (result) {
 //end goal - choose between ending vs cumulative scoring while creating; 
   //choose whether to grade branching and or questions on slides on this wrapper
 //bonus: get grades to display 5/10 questions answered correctly so the professor can see that info quickly 
-//problems numbers are slightly off, 7/9 instead of 3/4
 
 var onAnswered = function (result) 
 {
@@ -139,9 +138,12 @@ H5P.externalDispatcher.on('xAPI', function (event) {
 
 
 //see if there is a work around for avoiding double counts of certian votes
-//add option to remove cumulative points
+//add option to remove cumulative points - if you want to add branching scenario scoring, check if verb is completed, then add score
+// to create option, add radio button to index.html, then read it in index.js and use it in the creator
 
 /*
+use https://jsonformatter.curiousconcept.com/#
+
 where it goes wrong:
 
 xAPI event: {"type":"xAPI",

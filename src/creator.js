@@ -8,7 +8,7 @@ var cleanAndTrim = text => {
   return textClean.replace(/\s/g, "");
 };
 
-var creator = async (outputDir, h5pContentDir, tempDir, masteryScore) => {
+var creator = async (outputDir, h5pContentDir, tempDir, masteryScore, gradingMethod) => {
   const oldConsoleLog = console.log;
   const log = "";
   console.log = message => `${log}${message}\n`;
@@ -16,6 +16,11 @@ var creator = async (outputDir, h5pContentDir, tempDir, masteryScore) => {
   if (!masteryScore) {
     masteryScore = 100;
   }
+  if(!gradingMethod)
+  {
+    gradingMethod = "Question";
+  }
+
   await fs.remove(tempDir);
   await fs.copy(templateDir, tempDir, {
     errorOnExist: false,
@@ -38,6 +43,7 @@ var creator = async (outputDir, h5pContentDir, tempDir, masteryScore) => {
         language: "en-EN",
         identifier: "00",
         masteryScore: masteryScore,
+        gradingMethod: gradingMethod,
         startingPage: "index.html",
         source: tempDir,
         package: {
