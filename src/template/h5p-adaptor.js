@@ -140,6 +140,9 @@ H5P.externalDispatcher.on('xAPI', function (event) {
 //see if there is a work around for avoiding double counts of certian votes
 //add option to remove cumulative points - if you want to add branching scenario scoring, check if verb is completed, then add score
 // to create option, add radio button to index.html, then read it in index.js and use it in the creator
+// creator.js uses scopackager which is within the simple-scorm-packager module
+// the source for scopackager is in /simple-scorm-packager/lib/index.js according to cli.js
+// this is packaged into an object in lib/schemas/config.js
 
 /*
 use https://jsonformatter.curiousconcept.com/#
