@@ -43,7 +43,6 @@ var creator = async (outputDir, h5pContentDir, tempDir, masteryScore, gradingMet
         language: "en-EN",
         identifier: "00",
         masteryScore: masteryScore,
-        gradingMethod: gradingMethod,
         startingPage: "index.html",
         source: tempDir,
         package: {

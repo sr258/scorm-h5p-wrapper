@@ -117,8 +117,7 @@ ON_DEATH(function(signal, err) {
           outputDir,
           workspaceName,
           tempDir,
-          masteryScore, 
-          gradingMethod
+          masteryScore
         );
       } catch (error) {
         console.error(chalk.red(new Date().toLocaleString() + " - " + error));
@@ -133,6 +132,24 @@ ON_DEATH(function(signal, err) {
             "Something went wrong when creating the SCORM package. Try again!"
           );
       }
+
+      //generate grading settings file
+      const directory = path.join(tempDir, "gradingSettings.json");
+      const gradingSettings =
+      {
+        gradingMethod: gradingMethod,
+        test: "test"
+      };
+
+      fs.outputJson(directory, gradingSettings, function(err) 
+      {
+        console.log(err);
+
+        fs.readJson(file, function(err, data) 
+        {
+          console.log(data.name); 
+        })
+      });
 
       // Send created SCORM file to user and delete it
       res.download(outputDir + "/" + filename, async () => {
