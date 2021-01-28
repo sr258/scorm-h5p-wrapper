@@ -1,6 +1,8 @@
-var scorm = pipwerks.SCORM;
+// end of settings
 
+var scorm = pipwerks.SCORM;
 var numberOfQuestions = 0;
+
 
 function init() {
   scorm.init();
@@ -20,11 +22,11 @@ function end() {
 
 window.onload = function () {
   init();
-}
+};
 
 window.onunload = function () {
   end();
-}
+};
 
 var onCompleted = function (result) {
   var masteryScore;
@@ -55,16 +57,16 @@ var onCompleted = function (result) {
     }
     else if (scorm.version == "1.2") {
       if (passed) {
-        scorm.status("set", "passed")
+        scorm.status("set", "passed");
       }
       else {
-        scorm.status("set", "failed")
+        scorm.status("set", "failed");
       }
     }
   }
-}
+};
 
-var onAnswered = function (result) 
+var onAnswered = function (result)
 {
 
   numberOfQuestions++;
@@ -111,21 +113,73 @@ var onAnswered = function (result)
     else if (scorm.version == "1.2") 
     {
       if (passed)
-        scorm.status("set", "passed")
+        scorm.status("set", "passed");
       else
-        scorm.status("set", "failed")
+        scorm.status("set", "failed");
     }
   }
   
-}
+};
 
 var count = 0;
+const branchingFinalScoreID = "http://h5p.org/libraries/H5P.BranchingScenario-1.2";
 H5P.externalDispatcher.on('xAPI', function (event) {
+
+  // console.log('Grading Method: ' + gradingMethod);
+  // console.log('Mastery Score: ' + masteryScore);
+
   console.log('xAPI event: ' + JSON.stringify(event));
-  if (event.data.statement.result && event.data.statement.object.definition.description) 
+
+  if (isGradable(event))
   {
     console.log('This is question #' + count);
     count++;
-    onAnswered(event.data.statement.result);
+
+    if(isBranchingFinalScore(event))
+    {
+      console.log('This is the final branching score!');
+      if(gradeBranchingScore())
+      {
+        console.log('grading this one!');
+        onAnswered(event.data.statement.result);
+      }
+    }
+    else
+    {
+      console.log('This is a normal question');
+      if(isIndividualQuestion(event) && gradeQuestions())
+      {
+        console.log('grading this one!');
+        onAnswered(event.data.statement.result);
+      }
+    }
   }
 });
+
+
+var isGradable = function (event)
+{
+  return event.data.statement.result;
+};
+
+var isBranchingFinalScore = function (event)
+{
+  return event.data.statement && event.data.statement.context && event.data.statement.context.contextActivities 
+  && event.data.statement.context.contextActivities.category &&
+  (branchingFinalScoreID.localeCompare(event.data.statement.context.contextActivities.category[0].id) == 0);
+};
+
+var isIndividualQuestion = function (event)
+{
+  return event.data.statement.object.definition.description;
+};
+
+var gradeQuestions = function ()
+{
+  return (gradingMethod.localeCompare("Question") == 0) || (gradingMethod.localeCompare("Both") == 0);
+};
+
+var gradeBranchingScore = function ()
+{
+  return (gradingMethod.localeCompare("Branching") == 0) || (gradingMethod.localeCompare("Both") == 0);
+};

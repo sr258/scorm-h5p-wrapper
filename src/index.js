@@ -10,6 +10,9 @@ const fs = require("fs-extra");
 const fsExtra = require("fs-extra");
 const ON_DEATH = require("death")({ uncaughtException: true });
 const path = require("path");
+const extract = require('extract-zip');
+const archiver = require('archiver');
+const prependFile = require('prepend-file');
 
 const port = process.env.PORT || 80;
 const useStatistics = process.env.USE_STATISTICS
@@ -75,7 +78,6 @@ ON_DEATH(function(signal, err) {
     uploadedFile = req.files.h5p_file;
     const masteryScore = req.body.h5p_mastery_score;
     const gradingMethod = req.body.gradingMethod;
-    console.log("gradingMethod: " + gradingMethod);
 
     const uploadedFilePath = uploadTmpDir + "/" + uploadedFile.name;
     const tempDir = tempBaseDir + "/" + uploadedFile.name;
@@ -134,27 +136,172 @@ ON_DEATH(function(signal, err) {
       }
 
       //generate grading settings file
-      const directory = path.join(tempDir, "gradingSettings.json");
-      const gradingSettings =
-      {
-        gradingMethod: gradingMethod,
-        test: "test"
-      };
+      // const directory = path.join(outputDir, "gradingSettings.json");
+      // const gradingSettings = new Promise((resolve, reject) => {
+      //   return {
+      //     gradingMethod: gradingMethod,
+      //     test: "test"
+      //   };
+      // });
 
-      fs.outputJson(directory, gradingSettings, function(err) 
-      {
-        console.log(err);
+      // gradingSettings = {
+        // gradingMethod: gradingMethod,
+        // test: "test"/
+      // };
 
-        fs.readJson(file, function(err, data) 
-        {
-          console.log(data.name); 
-        })
+      // fs.ensureDir(tempDir, err => {
+      //   if(err)
+      //     console.log("ensureDir: " + err);
+      // })
+
+      // fs.ensureFile(directory, err => {
+      //   if(err)
+      //     console.log("ensureFile: " + err);
+      // })
+
+      // fs.outputJson(directory, {gradingMethod: gradingMethod, test: "test" }, function(err)
+      // {
+      //   if(err)
+      //   {
+      //     console.log("settings error1: " + err);
+      //     console.log("dir = " + directory);
+      //     console.log("altDir = " + outputDir);
+      //   }
+
+      //   fs.readJson(file, function(err, data)
+      //   {
+      //     console.log("settings error2: " + data.name);
+      //   });
+      // });
+
+      // console.log("Hey: "+outputDir+"/");
+      
+      // const archive_name = obj.title +
+      //       "_v" +
+      //       obj.package.version +
+      //       "_" +
+      //       obj.package.date;
+
+
+      var extractDir = path.resolve(outputDir) + "/" + filename.substring(0,filename.length - 4); //remove '.zip' for unzipped folder name
+      console.log("Unzipping: '" + outputDir + "/" +filename + "' to " + extractDir);
+      try 
+      {
+        await extract(outputDir + "/" +filename, { dir: extractDir })
+        console.log('Extraction complete')
+      } 
+      catch (err) 
+      {
+        if(err)
+          console.log('| extract error | '+err);
+        else
+          console.log('extract completed with no errors!');
+      }
+
+      const jsonDirectory = path.join(extractDir, "gradingSettings.json");
+      console.log("Writing JSON to " + jsonDirectory);
+      // await fs.outputJsonSync(jsonDirectory, {gradingMethod: gradingMethod, test: "test" }, function(err)
+      // {
+      //   if(err)
+      //   {
+      //     console.log("| json write error | " + err);
+      //     console.log("dir = " + jsonDirectory);
+      //     console.log("altDir = " + outputDir);
+      //   }
+      //   else
+      //     console.log("json printed with no error")
+
+      //   fs.readJsonSync(jsonDirectory, function(err, data)
+      //   {
+      //     console.log("| json write error2 | " + data.gradingMethod);
+      //   });
+      // });
+      await fs.outputJsonSync(jsonDirectory, {gradingMethod: gradingMethod, masteryScore: masteryScore });
+
+      
+      
+      const adaptorDirectory = path.join(extractDir, "h5p-adaptor.js");
+      const settings = '// settings\nvar gradingMethod = "' + gradingMethod + '";\nvar masteryScore = ' + masteryScore + ';\n\n';
+
+      console.log("Settings prepend: " + adaptorDirectory);
+      await prependFile(adaptorDirectory, settings);
+      
+
+      // const data = fs.readJsonSync(jsonDirectory);
+      // console.log("| json test! |" + data.gradingMethod);
+
+
+      //remove the original zip file since we are going to replace it
+      // await fs.remove(outputDir + "/" + filename); 
+
+      //METHOD 1
+      //rezip file
+      var output = fs.createWriteStream(extractDir + "-final.zip"); //+ "-final.zip"
+      var archive = archiver('zip');
+
+      await archive.pipe(output);
+      fs.ensureDirSync(extractDir);
+      await archive.directory(extractDir, "");
+
+      await output.on('close', function () {
+        console.log(archive.pointer() + ' total bytes');
+        console.log('archiver has been finalized and the output file descriptor has closed.');
+      });
+
+      await archive.on('error', function(err){
+          console.log('| rearchiver error | ' + err)
+      });
+
+      await archive.on('warning', function(err) {
+        console.log('| rearchiver error2 | ' + err);
+      });
+      
+      await archive.finalize();
+
+      //METHOD 2
+      // await new Promise((resolve, reject) => {
+      //   archive
+      //     .directory(extractDir, false)
+      //     .on('error', err => reject(err))
+      //     .pipe(output)
+      //   ;
+
+      //   stream.on('close', () => resolve());
+      //   archive.finalize();
+      // });
+
+      // //METHOD 3
+      // var execFile = require('child_process').execFile;
+      // await execFile('zip', ['-r', '-j', extractDir+ "-final.zip", extractDir], function(err, stdout) {
+      //     if(err){
+      //         console.log(err);
+      //         throw err;
+      //     }
+
+      //     console.log('success');
+      // });
+
+      //METHOD 4
+      var zipdir = require('zip-dir');
+      var buffer = await zipdir(extractDir);
+      var outputZip = extractDir + "-final.zip"
+      zipdir(extractDir, { saveTo: outputZip }, function (err, buffer) {
+        // `buffer` is the buffer of the zipped file
+        // And the buffer was saved to `~/myzip.zip`
+        if(err)
+          console.log("| ZIP ERR | " + err);
+        else
+          console.log("No zipping errors");
       });
 
       // Send created SCORM file to user and delete it
-      res.download(outputDir + "/" + filename, async () => {
-        await fs.remove(outputDir + "/" + filename);
-      });
+      // res.download(extractDir + "-final.zip", async () => {
+      //     await fs.remove(extractDir + "-final.zip");
+      //   });
+
+      await res.download(outputZip);
+
+      // fs.remove(extractDir + "-final.zip");
 
       // Log success
       console.log(
