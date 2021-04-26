@@ -1,6 +1,6 @@
 {
   "name": "scorm-h5p-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A SCORM wrapper for h5p content",
   "main": "src/index.js",
   "scripts": {
