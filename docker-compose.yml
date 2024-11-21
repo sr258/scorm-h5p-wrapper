@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+
+    node:
+      build: 
+        context: .
+      environment:
+        - PORT=80
+      volumes:
+        - ./static:/usr/src/app/static
+      ports:
+        - "8080:80"
+
