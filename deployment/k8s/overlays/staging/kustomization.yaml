@@ -1,0 +1,8 @@
+namePrefix: staging-
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+bases:
+  - ../../base
+
